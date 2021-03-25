@@ -8,6 +8,5 @@ if __name__ == '__main__':
     data['positive_ratings_percentage'] = data.apply(
         lambda row: row.positive_ratings / (row.negative_ratings + row.positive_ratings), axis=1)
 
-    #lab2(data)
+    lab2(data)
     lab3(data)
-

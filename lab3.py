@@ -1,36 +1,38 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-def Plot_linear_regression(x, y, ypred, titel, titel_x,  titel_y):
+
+def plot_linear_regression(x, y, y_pred, title, title_x, title_y):
     plt.figure(figsize=(12, 6))
-    plt.plot(x, ypred)
+    plt.plot(x, y_pred)
     plt.plot(x, y, 'ro')
-    plt.title(titel)
-    plt.xlabel(titel_x)
-    plt.ylabel(titel_y)
+    plt.title(title)
+    plt.xlabel(title_x)
+    plt.ylabel(title_y)
     plt.show()
 
-def Y_evaluation(x, y):
-    xmean = np.mean(x)
-    ymean = np.mean(y)
-    xycov = (x - xmean) * (y - ymean)
-    xvar = (x - xmean) ** 2
-    beta = xycov.sum() / xvar.sum()
-    alpha = ymean - (beta * xmean)
-    ypred = alpha + beta * x
-    return ypred
+
+def y_evaluation(x, y):
+    x_mean = np.mean(x)
+    y_mean = np.mean(y)
+    x_y_cov = (x - x_mean) * (y - y_mean)
+    x_var = (x - x_mean) ** 2
+    beta = x_y_cov.sum() / x_var.sum()
+    alpha = y_mean - (beta * x_mean)
+    y_pred = alpha + beta * x
+    return y_pred
+
 
 def lab3(data):
-
     x_value = 'positive_ratings_percentage'
     for y_value in data:
         if str(data[y_value].dtype) != 'object' and y_value != x_value:
-            ypred = Y_evaluation(data[x_value], data[y_value])
-            Plot_linear_regression(
+            y_pred = y_evaluation(data[x_value], data[y_value])
+            plot_linear_regression(
                 data[x_value],
                 data[y_value],
-                ypred,
-                x_value+" vs "+ y_value,
+                y_pred,
+                x_value + " vs " + y_value,
                 x_value,
                 y_value
             )

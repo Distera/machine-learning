@@ -1,6 +1,7 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
 def lab2(data):
     sns.violinplot(x=data.positive_ratings_percentage)
     sns.displot(data.positive_ratings_percentage)
