@@ -23,16 +23,17 @@ def y_evaluation(x, y):
     return y_pred
 
 
-def lab3(data):
-    x_value = 'positive_ratings_percentage'
-    for y_value in data:
-        if str(data[y_value].dtype) != 'object' and y_value != x_value:
-            y_pred = y_evaluation(data[x_value], data[y_value])
+def lab3(X, y_data, y_column_name):
+    data = X.copy(deep=True)
+    data[y_column_name] = y_data
+    for x_column_name in data:
+        if x_column_name != y_column_name:
+            y_pred = y_evaluation(data[x_column_name], data[y_column_name])
             plot_linear_regression(
-                data[x_value],
-                data[y_value],
+                data[x_column_name],
+                data[y_column_name],
                 y_pred,
-                x_value + " vs " + y_value,
-                x_value,
-                y_value
+                y_column_name + " vs " + x_column_name,
+                x_column_name,
+                y_column_name
             )
