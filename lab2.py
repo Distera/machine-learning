@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 
 def lab2(data, y_data, name_column):
+    print(data.isnull().sum())
     sns.violinplot(x=y_data)
     sns.displot(y_data)
     sns.boxplot(x=y_data)

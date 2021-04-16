@@ -8,6 +8,9 @@ from lab2 import lab2
 from lab3 import lab3
 from lab4 import lab4_data_standardization, lab4_acceleration
 from lab5 import lab5
+from lab6 import lab6
+from lab7 import lab7
+from lab8 import lab8, lab8_tmin_all_data
 
 
 def highlight_features_in_dayaFrame(data, name_column):
@@ -83,19 +86,24 @@ def get_healthcare_dataset():
     list_bmi = []
     for bmi in data['bmi']:
         list_bmi.append(29 if math.isnan(bmi) else bmi)
-    data['bmi'] = list_bmi
+    x['bmi'] = list_bmi
 
     return x, y, y_name
 
 
 if __name__ == '__main__':
     pd.options.display.max_columns = 20
+    pd.set_option('display.expand_frame_repr', False)
     x, y, name_the_desired_value = get_healthcare_dataset()
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=1)  # 80/20
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.05, random_state=1)  # 90/10 - 500
 
     # lab1(x)
     # lab2(x, y[name_the_desired_value], name_the_desired_value)
     # lab3(x, y, name_the_desired_value)
     # lab4_data_standardization(x, y, name_the_desired_value, ["у пациента не было инсульта", "у пациента был инсульт"])
     # lab4_acceleration(x_train, x_test)
-    # lab5(x_train, x_test, y_train, y_test)
+    # lab5(x_train, x_test, y_train[name_the_desired_value], y_test[name_the_desired_value])
+    # lab6(x_train, x_test, y_train[name_the_desired_value], y_test[name_the_desired_value])
+    # lab7(x_train, x_test, y_train[name_the_desired_value], y_test[name_the_desired_value])
+    # lab8(x_train)
+    # lab8_tmin_all_data(x_train, y_train)

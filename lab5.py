@@ -3,12 +3,13 @@ from matplotlib import pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import tree
 
+from plot_diagram import plot_projected_and_expected
+
 
 def lab5(x_train, x_test, y_train, y_test):
     clf = DecisionTreeClassifier(criterion="entropy", max_depth=3)  # max_leaf_nodes=10, random_state=0
     clf.fit(x_train, y_train)
-    y_pred = clf.predict(x_test)
-    print("Прогноз y на тестовых данных",y_pred)
+    plot_projected_and_expected(x_test, y_test, clf.predict(x_test))
     print("Tочность на тренировочной выборке: {:.3f}".format(clf.score(x_train, y_train)))
     print("Tочность на тестовой выборке: {:.3f}".format(clf.score(x_test, y_test)))
 

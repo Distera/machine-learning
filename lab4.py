@@ -65,7 +65,7 @@ def lab4_acceleration(train_data, test_data):
 
     train_img = pca.transform(train_data)
     test_img = pca.transform(test_data)
-    # print("--------------------------------------")
-    # print(train_img)
-    # print("--------------------------------------")
-    # print(test_img)
+    print("--------------------------------------")
+    print(train_img)
+    print("--------------------------------------")
+    print(test_img)
